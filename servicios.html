@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SportStore - Servicios</title>
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;800&family=Poppins:wght@400;800&display=swap"
+        rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #f4f4f4;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+
+        /* Header Styles */
+        .header {
+            background-color: #ffffff;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            position: relative;
+        }
+
+        .menu {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 0;
+        }
+
+        .logo {
+            font-family: 'poppins', sans-serif;
+            font-size: 35px;
+            font-weight: 800;
+            color: #111111;
+            text-decoration: none;
+            text-transform: uppercase;
+        }
+
+        .menu-icono {
+            display: none;
+        }
+
+        .navbar ul {
+            display: flex;
+            list-style: none;
+        }
+
+        .navbar ul li {
+            margin-left: 20px;
+        }
+
+        .navbar ul li a {
+            text-decoration: none;
+            color: #070707;
+            font-weight: 600;
+            transition: color 0.3s ease;
+        }
+
+        .navbar ul li a:hover {
+            color: #ff6b00;
+        }
+
+        .header-content {
+            text-align: center;
+            padding: 100px 0;
+            background: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)), url('img/header-bg.jpg');
+            background-size: cover;
+            background-position: center;
+            color: #362a2a;
+        }
+
+        .header-content img {
+            width: 800%;
+            height: auto;
+            background: rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3), url('img/header-bg.jpg');
+            background-size: cover;
+            background-position: center;
+            max-width: 1100px;
+            margin-bottom: auto;
+            
+        }
+
+        .header-txt h1 {
+            font-family: 'Oswald', sans-serif;
+            font-size: 48px;
+            margin-bottom: 15px;
+        }
+
+        .header-txt p {
+            font-size: 18px;
+            margin-bottom: 30px;
+        }
+
+        .btn-1 {
+            display: inline-block;
+            background-color: #0a0703;
+            color: #fffefe;
+            padding: 12px 30px;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: 600;
+            transition: background-color 0.3s ease;
+        }
+
+        .btn-1:hover {
+            background-color: #f4a43c;
+        }
+
+        /* Servicios Styles */
+        .servicios {
+            padding: 80px 0;
+            text-align: center;
+        }
+
+        .servicios h2 {
+            font-family: 'Oswald', sans-serif;
+            font-size: 36px;
+            margin-bottom: 50px;
+        }
+
+        .product-content {
+            display: flex;
+            justify-content: space-between;
+            gap: 30px;
+        }
+
+        .product {
+            background-color: #ffffff;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            transition: transform 0.3s ease;
+        }
+
+        .product:hover {
+            transform: scale(1.30);
+        }
+
+        .product img {
+            width: 110%;
+            height: 100px;
+            object-fit: cover;
+        }
+
+        .product-txt {
+            padding: 20px;
+            text-align: center;
+        }
+
+        .product-txt h3 {
+            font-family: 'Oswald', sans-serif;
+            margin-bottom: 10px;
+        }
+
+        .btn-2 {
+            display: inline-block;
+            background-color: #333;
+            color: #ffffff;
+            padding: 10px 20px;
+            text-decoration: none;
+            border-radius: 5px;
+            margin-top: 15px;
+            transition: background-color 0.3s ease;
+        }
+
+        .btn-2:hover {
+            background-color: #f9ae17;
+        }
+
+        /* Footer Styles */
+        .footer {
+            background-color: #333;
+            color: #ffffff;
+            padding: 50px 0;
+        }
+
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .link h3 {
+            margin-bottom: 20px;
+            font-family: 'Oswald', sans-serif;
+        }
+
+        .link ul {
+            list-style: none;
+        }
+
+        .link ul li {
+            margin-bottom: 10px;
+        }
+
+        .link ul li a {
+            color: #ffffff;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .link ul li a:hover {
+            color: #ff6b00;
+        }
+
+        /* Responsive Styles */
+        @media (max-width: 768px) {
+            .menu-icono {
+                display: block;
+                cursor: pointer;
+            }
+
+            .navbar {
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background-color: #ffffff;
+                display: none;
+            }
+
+            .navbar ul {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .navbar ul li {
+                margin: 15px 0;
+            }
+
+            #menu:checked~.navbar {
+                display: block;
+            }
+
+            .product-content {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header class="header">
+        <div class="menu container">
+            <a href="index.html" class="logo">ICONIQ</a>
+            <input type="checkbox" id="menu">
+            <label for="menu">
+                <img src="img/menu.png" class="menu-icono" alt="menu">
+            </label>
+            <nav class="navbar">
+                <ul>
+                    <li><a href="index.html">Inicio</a></li>
+                    <li><a href="servicios.html">Servicios</a></li>
+                    <li><a href="#lista-1">Productos</a></li>
+                    <li><a href="index.html#contactos">Contacto</a></li>
+                </ul>
+            </nav>
+        </div>
+        <div class="header-content container">
+            <div class="header-txt">
+                <img src="img/s8.jpg" alt="imagen de portada">
+                <h1>Asesoramiento en Moda Casual y Elegante</h1>
+                <p>Encuentra tu estilo ideal</p>
+                <a href="index.html#formulario" class="btn-1">Consulta Gratis</a>
+            </div>
+        </div>
+    </header>
+    <section class="servicios container">
+        <h2>Nuestros Servicios de Asesoría</h2>
+        <div class="product-content">
+            <div class="product">
+                <img src="img/s2.webp" alt="Imagen de Asesoría">
+                <div class="product-txt">
+                    <h3>Consulta Personal</h3>
+                    <p>Asesoramiento one-to-one sobre tu estilo deportivo</p>
+                    <a href="#" class="btn-2">Agendar</a>
+                </div>
+            </div>
+            <div class="product">
+                <img src="img/s1.jpg" alt="Imagen de Estilo">
+                <div class="product-txt">
+                    <h3>Análisis de Imagen</h3>
+                    <p>Descubre los colores y cortes que mejor te favorecen</p>
+                    <a href="#" class="btn-2">Agendar</a>
+                </div>
+            </div>
+            <div class="product">
+                <img src="img/s5.webp" alt="Imagen de Outfit">
+                <div class="product-txt">
+                    <h3>Outfit Casual Elegante</h3>
+                    <p>Combinación perfecta para tu estilo y disciplina</p>
+                    <a href="#" class="btn-2">Agendar</a>
+                </div>
+            </div>
+        </div>
+    </section>
+    <footer class="footer">
+        <div class="footer-content container">
+            <div class="link">
+                <h3>Servicios</h3>
+                <ul>
+                    <li><a href="#">Consulta Personal</a></li>
+                    <li><a href="#">Análisis de Imagen</a></li>
+                    <li><a href="#">Outfit Deportivo</a></li>
+                </ul>
+            </div>
+        </div>
+    </footer>
+</body>
+
+</html>
