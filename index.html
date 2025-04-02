@@ -1,0 +1,1214 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SportStore</title>
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;800&family=Poppins:wght@400;800&display=swap"
+        rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            text-decoration: none;
+            list-style: none;
+
+        body {
+            font-family: 'Poppins', sans-serif;
+        }
+
+        img {
+            max-width: 100%;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .header {
+            display: flex;
+            align-items: center;
+            background-color: #f5f5f5;
+            padding: 70px 0;
+        }
+
+        .menu {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .logo {
+            font-size: 50px;
+            color: #111111;
+            text-transform: uppercase;
+            font-weight: 800;
+        }
+
+        .menu .navbar ul li {
+            position: relative;
+            float: left;
+        }
+
+        .menu .navbar ul li a {
+            font-size: 18px;
+            padding: 20px;
+            color: #111111;
+            display: block;
+        }
+
+        #menu {
+            display: none;
+        }
+
+        .menu-icono {
+            width: 25px;
+        }
+
+        .menu label {
+            cursor: pointer;
+            display: none;
+        }
+
+        .submenu {
+            position: relative;
+        }
+
+        .submenu #carrito {
+            display: none;
+        }
+
+        .submenu:hover #carrito {
+            display: block;
+            position: absolute;
+            right: 0;
+            backdrop-filter: blur(10px);
+            top: 100%;
+            z-index: 1;
+            background-color: #4e4b5076;
+            padding: 20px;
+            min-width: 400px;
+        }
+
+        table {
+            width: 100%;
+        }
+
+        th, td {
+            color: #ffffff;
+        }
+
+        .borrar {
+            background-color: #111111;
+            border-radius: 50px;
+            padding: 5px 10px;
+            color: #ffffff;
+            font-weight: 800;
+            cursor: pointer;
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex: 1;
+            padding: 0 200px;
+        }
+
+        .header-img {
+            flex-basis: 50%;
+            text-align: center;
+        }
+
+        .header-txt {
+            flex-basis: 50%;
+            text-align: center;
+        }
+
+        .header-txt h1 {
+            font-size: 90px;
+            text-transform: uppercase;
+            line-height: 1;
+            color: #111111;
+            font-family: Oswald, sans-serif;
+            margin-bottom: 15px;
+        }
+
+        .header-txt p {
+            font-size: 20px;
+            text-transform: uppercase;
+            margin-bottom: 20px;
+        }
+
+        .btn-1 {
+            display: inline-block;
+            padding: 11px 25px;
+            background-color: #111111;
+            color: #ffffff;
+            border-radius: 50px;
+        }
+
+        .btn-2 {
+            display: inline-block;
+            padding: 11px 25px;
+            background-color: #000000;
+            color: #ffffff;
+            border-radius: 50px;
+            transition: background-color 0.3s ease;
+        }
+
+        .btn-2:hover {
+            background-color: #f99129;
+        }
+
+        .productos {
+            padding: 50px 0;
+            text-align: center;
+        }
+
+        .productos h2 {
+            color: #111111;
+            font-family: Oswald, sans-serif;
+            font-size: 50px;
+            text-transform: uppercase;
+            margin-bottom: 50px;
+        }
+
+        .product:hover {
+            transform: scale(1.15);
+        }
+
+        .product-content {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 50px;
+        }
+
+        
+
+        .product {
+            text-align: center;
+            padding: 30px 0;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+            background-color: #ffffff;
+            border-radius: 10px;
+            overflow: hidden;
+            transition: transform 0.3s ease;
+        }
+        }
+
+        .product img {
+            width: 250px;
+            height: 370px;
+            margin-bottom: 20px;
+        }
+
+        .product h3 {
+            font-size: 20px;
+            color: #111111;
+            font-family: Oswald, sans-serif;
+            text-transform: uppercase;
+            margin-bottom: 15px;
+        }
+
+        .product p {
+            font-size: 16px;
+            color: #111111;
+            margin-bottom: 15px;
+        }
+
+        .precio {
+            font-weight: 800;
+        }
+
+        .icons {
+            padding: 50px 0 100px 0;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .icon-1 {
+            flex-basis: calc(33.3% - 30px);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 25px;
+            background-color: #f5f5f5;
+        }
+
+        .icon-txt h3 {
+            font-size: 20px;
+            color: #111111;
+            font-family: Oswald, sans-serif;
+            text-transform: uppercase;
+        }
+
+        .icon-img {
+            flex-basis: 70%;
+            text-align: center;
+        }
+        .icon-img img {
+            width: 100px;
+            height: 100px;
+        }
+
+        .icon-txt p {
+            font-size: 16px;
+            color: #111111;
+        }
+
+        .blog {
+            display: flex;
+            justify-content: space-between;
+            padding-bottom: 100px;
+        }
+
+        .blog-1 {
+            flex-basis: calc(33.3% - 30px);
+        }
+
+        .blog-1 img {
+            margin-bottom: 20px;
+        }
+
+        .blog-1 h3 {
+            font-size: 20px;
+            color: #111111;
+            font-family: Oswald, sans-serif;
+            text-transform: uppercase;
+            margin-bottom: 15px;
+        }
+
+        .blog-1 p {
+            font-size: 16px;
+            color: #111111;
+        }
+
+        .footer {
+            padding: 10px 0;
+            background-color: #675f5f72;
+        }
+
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .link h3 {
+            font-size: 18px;
+            color: #ffffff;
+            font-family: Oswald, sans-serif;
+            text-transform: uppercase;
+            margin-bottom: 20px;
+        }
+
+        .link a {
+            display: block;
+            color: #dcdcdc;
+            margin-bottom: 80px;
+        }
+
+        @media (max-width: 991px) {
+            .header-content {
+                flex-direction: column;
+                padding: 0 20px;
+            }
+
+            .menu {
+                padding: 20px;
+            }
+
+            .menu label {
+                display: initial;
+            }
+
+            .menu .navbar {
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                background-color: #181818;
+                display: none;
+                transition: all 0.3s ease;
+            }
+
+            .menu .navbar ul li {
+                width: 100%;
+            }
+
+            
+
+            .menu .navbar ul li a {
+                color: #ffffff;
+            }
+
+            #menu:checked~.navbar {
+                display: initial;
+            }
+
+            .logo {
+                display: none;
+            }
+
+            .submenu:hover #carrito {
+                min-width: 100%;
+            }
+
+            .header {
+                min-height: 0vh;
+            }
+
+            .header-content {
+                padding: 50px 0;
+                flex-basis: 100%;
+            }
+
+            .header-img {
+                display: none;
+            }
+
+            .header-txt {
+                flex-basis: 100%;
+                text-align: center;
+            }
+
+            .header-txt h1 {
+                font-size: 70px;
+            }
+
+            .ofert {
+                padding: 30px 30px 0 30px;
+                flex-direction: column;
+            }
+
+            .ofert-1 {
+                margin-bottom: 30px;
+            }
+
+            .product {
+                padding: 0 30px 30px 30px;
+                transition: tranform 0.3s ease;
+                background-color: #ffffff;
+                border-radius: 10px;
+                box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+                overflow: hidden;
+            }
+
+            .product:hover {
+                transform: scale(1.05);
+            } 
+
+            .product h2 {
+                margin-bottom: 30px;
+            }
+
+            .product-content {
+                grid-template-columns: repeat(1, 1fr);
+                gap: 30px;
+            }
+
+            .product img {
+                width: 200%;
+                height: 280;
+            }
+
+            .icons {
+                padding: 30px;
+                flex-direction: column;
+            }
+
+            .icon-1 {
+                margin-bottom: 30px;
+            }
+
+            .blog {
+                padding: 0 40px 40px 40px;
+                flex-direction: column;
+            }
+
+            .blog-1 {
+                margin-bottom: 30px;
+            }
+
+            .footer {
+                padding: 200px;
+            }
+
+            .footer-content {
+                flex-direction: column;
+                text-align: center;
+
+            }
+
+            .body {
+                font-family: Arial, sans-serif;
+                margin: 0;
+                padding: 0;
+                background-color: #f9f9f9;
+            }
+
+            .contacto-section {
+                max-width: 1000px;
+                margin: 0 auto;
+                padding: 2rem;
+                background-color: #f4f4f4;
+            }
+
+            .contacto-section h2 {
+                text-align: center;
+                color: #000000;
+                margin-bottom: 2rem;
+                font-size: 2.5rem;
+                font-family: oswald, sans-serif;
+                text-transform: uppercase;
+            }
+
+            .contacto-content {
+                display: flex;
+                justify-content: space-between;
+                gap: 2rem;
+            }
+
+
+            .contacto-info>div {
+                flex: 1;
+                text-align: center;
+                padding: 1rem;
+            }
+
+            .contacto-info h3 {
+                color: #f7fafd;
+                margin-bottom: 0.5rem;
+            }
+
+            .contacto-info p .contacto-info a {
+                color: #02070b;
+                text-decoration: none;
+            }
+        }
+
+        /* Form Styling */
+        .form-container {
+            background-color: white;
+            border-radius: 100px;
+            padding: 2rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            margin-top: 2rem;
+            width: 600%;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .form-container h3 {
+            text-align: center;
+            color: #2c3e50;
+            margin-bottom: 1rem;
+        }
+
+        .form-container form {
+            display: grid;
+            gap: 0.5rem;
+        }
+
+        .form-container label {
+            color: #34495e;
+            font-weight: bold;
+        }
+
+        .form-container input {
+            width: 50%;
+            padding: 0.50rem;
+            border: 10px solid #bdc7c4;
+            border-radius: 5px;
+            transition: border-color 0.5s ease;
+        }
+
+        .form-container input:focus {
+            width: 80%;
+            outline: none;
+            border-color: #5fc3fa76;
+            transition: all 0.9s ease;
+        }
+
+        .form-container button {
+            background-color: #72b8e6;
+            color: white;
+            border: none;
+            padding: 0.75rem;
+            border-radius: 2px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            width: 20%;
+
+        }
+
+        .form-container button:hover {
+            background-color: #087fcf;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .contacto-content {
+                flex-direction: column;
+            }
+
+            .contacto-info {
+                flex-direction: column;
+            }
+        }
+
+        .carousel-container {
+    position: relative;
+    width: 100%;
+    max-width: 2000px;
+    margin: 0 auto;
+    overflow: hidden;
+    border: 40px solid #e0e0e0;
+    border-radius: 8px;
+    padding: 150px;
+  }
+  
+  .carousel-wrapper {
+    display: flex;
+    transition: transform 1s ease;
+  }
+  
+  .carousel-slide {
+    display: flex;
+    min-width: 100%;
+    gap: 20px;
+    justify-content: space-between;
+    padding: 10px;
+    opacity: 0;
+    transition: opacity 2.5s ease;
+    position: absolute;
+  }
+  
+  .carousel-slide.active {
+    opacity: 1;
+    position: relative;
+  }
+  
+  .product-card {
+    flex: 1;
+    padding: 6px;
+    border-radius: 8px;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.1);
+    text-align: center;
+    background-color: white;
+    transition: transform 0.3s ease;
+  }
+  
+  .product-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+  }
+  
+  .product-card img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 5px;
+  }
+  
+  .product-card h3 {
+    margin: 10px 0;
+    font-size: 18px;
+  }
+  
+  .price {
+    font-weight: bold;
+    color: #010101;
+    margin-bottom: 15px;
+  }
+  
+  .info-btn {
+    background-color: #000;
+    color: white;
+    border: none;
+    padding: 8px 15px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.5s;
+  }
+  
+  .info-btn:hover {
+    background-color: #f68f28;
+  }
+  
+  .carousel-button {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(0,0,0,0.5);
+    color: white;
+    border: none;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    font-size: 18px;
+    cursor: pointer;
+    z-index: 5;
+    transition: background-color 0.5s;
+  }
+  
+  .carousel-button.prev {
+    left: 10px;
+    transition: background-color 0.5s;
+  }
+
+  .carousel-button.products {
+    background-color: #f68f28;
+  }
+  
+  .carousel-button.next {
+    right: 10px;
+  }
+  
+  .carousel-dots {
+    display: flex;
+    justify-content: center;
+    margin-top: 15px;
+  }
+  
+  .dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background-color: #ddd;
+    margin: 0 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  
+  .dot.active {
+    background-color: #333;
+  }
+</style>
+   
+</head>
+
+<body>
+
+    <header class="header">
+
+        <div class="menu container">
+            <a href="#" class="logo">ICONIQ</a>
+            <input type="checkbox" id="menu">
+            <label for="menu">
+                <img src="img/menu.png" class="menu-icono" alt="menu">
+            </label>
+            <nav class="navbar">
+                <ul>
+                    <li><a href="index.html">Inicio</a></li>
+                    <li><a href="servicios.html">Servicios</a></li>
+                    <li><a href="#lista-1">Productos</a></li>
+                    <li><a href="#contactos">Contacto</a></li>
+                </ul>
+            </nav>
+            <div>
+                <ul>
+                    <li class="submenu">
+                        <img src="img/car.svg" id="img-carrito" alt="carrito">
+                        <div id="carrito">
+                            <table id="lista-carrito">
+                                <thead>
+                                    <tr>
+                                        <th>Imagen</th>
+                                        <th>Nombre</th>
+                                        <th>Precio</th>
+                                        <th></th>
+                                    </tr>
+                                </thead>
+                                <tbody></tbody>
+                            </table>
+                            <a href="#" id="vaciar-carrito" class="btn-2">Vaciar carrito</a>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="header-content container">
+            <div class="header-img">
+                <img src="img/right.png" alt="">
+            </div>
+            <div class="header-txt">
+                <h1>Ofertas especiales</h1>
+                <p>Estrena las mejores prendas</p>
+                <a href="#ofertas" class="btn-1">Información</a>
+            </div>
+        </div>
+    </header>
+
+    <section class="ofert container" id="ofertas">
+            <!-- Carrusel de Productos -->
+            <div class="carousel-container">
+                <div class="carousel-wrapper">
+                    <div class="carousel-slide active">
+                        <div class="product-card">
+                            <img src="img/blaz.ne.h" alt="Producto 1">
+                            <h3>Blazer - Hombre</h3>
+                            <p class="price">S/119.99</p>
+                            <a class="info-btn"><a>Información</a></button>
+                        </div>
+                        <div class="product-card">
+                            <img src="img/blazer.d.webp" alt="Producto 2">
+                            <h3>Blazer - Dama</h3>
+                            <p class="price">S/109.99</p>
+                            <button class="info-btn">Información</button>
+                        </div>
+                        <div class="product-card">
+                            <img src="img/blusa.v.d.webp" alt="Producto 3">
+                            <h3>Blusa - Dama</h3>
+                            <p class="price">S/49.99</p>
+                            <button class="info-btn">Información</button>
+                        </div>
+                    </div>
+                    <div class="carousel-slide">
+                        <div class="product-card">
+                            <img src="img/casaca.jean.h" alt="Producto 4">
+                            <h3>Casaca jean - Hombre</h3>
+                            <p class="price">S/99.90</p>
+                            <button class="info-btn">Información</button>
+                        </div>
+                        <div class="product-card">
+                            <img src="img/camisa-pant-gorra-2h.webp" alt="Producto 5">
+                            <h3>Camisa Elegante - Hombre</h3>
+                            <p class="price">S/89.99</p>
+                            <button class="info-btn">Información</button>
+                        </div>
+                        <div class="product-card">
+                            <img src="img/pant.anch.d.avif" alt="Producto 6">
+                            <h3>Pantalon Ancho - Dama</h3>
+                            <p class="price">S/59.99</p>
+                            <button class="info-btn">Información</button>
+                        </div>
+                    </div>
+                </div>
+            
+                <button class="carousel-button prev">&lt;</button>
+                <button class="carousel-button next">&gt;</button>
+            
+                <div class="carousel-dots">
+                    <span class="dot active" data-slide="0"></span>
+                    <span class="dot" data-slide="1"></span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <main class="productos container" id="lista-1">
+        <h2>Productos</h2>
+
+        <div class="product-content">
+            <div class="product" id="1">
+                <img src="img/blusa.v.d.webp" alt="">
+                <div class="product-txt">
+                    <h3>Blusa - Dama</h3>
+                    <p>Calidad premium</p>
+                    <p class="precio">S/ 49.99</p>
+                    <a href="#" class="agregar-carrito btn-2" data-id="1">Añadir al carrito</a>
+                </div>
+            </div>
+            <div class="product" id="2">
+                <img src="img/1.png" alt="">
+                <div class="product-txt">
+                    <h3>Camisa Casual - Caballero</h3>
+                    <p>Calidad premium</p>
+                    <p class="precio">S/ 119.99</p>
+                    <a href="#" class="agregar-carrito btn-2" data-id="1">Añadir al carrito</a>
+                </div>
+            </div>
+
+            <div class="product" id="3">
+                <img src="img/blaz.ne.h" alt="">
+                <div class="product-txt">
+                    <h3>Blazer - Hombre</h3>
+                    <p>Calidad premium</p>
+                    <p class="precio">S/ 159.90</p>
+                    <a href="#" class="agregar-carrito btn-2" data-id="1">Añadir al carrito</a>
+                </div>
+            </div>
+            <div class="product" id="4">
+                <img src="img/2.png" alt="">
+                <div class="product-txt">
+                    <h3>Casaca - Caballero</h3>
+                    <p>Calidad premium</p>
+                    <p class="precio">S/ 349.90</p>
+                    <a href="#" class="agregar-carrito btn-2" data-id="2">Añadir al carrito</a>
+                </div>
+            </div>
+
+            <div class="product" id="5">
+                <img src="img/blazer.d.webp" alt="">
+                <div class="product-txt">
+                    <h3>Blazer - Dama</h3>
+                    <p>Calidad premium</p>
+                    <p class="precio">S/ 109.99</p>
+                    <a href="#" class="agregar-carrito btn-2" data-id="2">Añadir al carrito</a>
+                </div>
+            </div>
+
+            <div class="product" id="6">
+                <img src="img/3.png" alt="">
+                <div class="product-txt">
+                    <h3>Casaca - Damas</h3>
+                    <p>Calidad premium</p>
+                    <p class="precio">S/ 219.90</p>
+                    <a href="#" class="agregar-carrito btn-2" data-id="3">Añadir al carrito</a>
+                </div>
+            </div>
+
+            <div class="product" id="7">
+                <img src="img/casaca.jean.h" alt="">
+                <div class="product-txt">
+                    <h3>Casaca jean - Hombre</h3>
+                    <p>Calidad premium</p>
+                    <p class="precio">S/ 99.90</p>
+                    <a href="#" class="agregar-carrito btn-2" data-id="3">Añadir al carrito</a>
+                </div>
+            </div>
+
+            <div class="product" id="8">
+                <img src="img/camisa-pant-gorra-2h.webp" alt="">
+                <div class="product-txt">
+                    <h3>Camisa Elegante - Hombre</h3>
+                    <p>Calidad premium</p>
+                    <p class="precio">S/ 89.99</p>
+                    <a href="#" class="agregar-carrito btn-2" data-id="3">Añadir al carrito</a>
+                </div>
+            </div>
+
+            <div class="product" id="9">
+                <img src="img/4.png" alt="">
+                <div class="product-txt">
+                    <h3>Camisa Elegante - Hombre</h3>
+                    <p>Calidad premium</p>
+                    <p class="precio">S/ 189.99</p>
+                    <a href="#" class="agregar-carrito btn-2" data-id="4">Añadir al carrito</a>
+                </div>
+            </div>
+
+            <div class="product" id="10">
+                <img src="img/5.png" alt="">
+                <div class="product-txt">
+                    <h3>Camisa Cuello Corto - Hombre</h3>
+                    <p>Calidad premium</p>
+                    <p class="precio">S/ 99.90</p>
+                    <a href="#" class="agregar-carrito btn-2" data-id="5">Añadir al carrito</a>
+                </div>
+            </div>
+
+            <div class="product" id="11">
+                <img src="img/6.png" alt="">
+                <div class="product-txt">
+                    <h3>Casaca con Capucha - Damas</h3>
+                    <p>Calidad premium</p>
+                    <p class="precio">S/ 189.90</p>
+                    <a href="#" class="agregar-carrito btn-2" data-id="6">Añadir al carrito</a>
+                </div>
+            </div>
+
+            <div class="product" id="12">
+                <img src="img/pant.anch.d.avif" alt="">
+                <div class="product-txt">
+                    <h3>Pantalon Ancho - Dama</h3>
+                    <p>Calidad premium</p>
+                    <p class="precio">S/ 59.99</p>
+                    <a href="#" class="agregar-carrito btn-2" data-id="6">Añadir al carrito</a>
+                </div>
+            </div>
+
+        </div>
+    </main>
+
+    <section class="icons container">
+        <div class="icon-1">
+            <div class="icon-img">
+                <img src="img/i1.svg" alt="">
+            </div>
+            <div class="icon-txt">
+                <h3>Calidad y Materiales Premium</h3>
+                <p>
+                    Las prendas bien confeccionadas no solo elevan tu estilo, 
+                    sino que garantizan comodidad y durabilidad. Desde telas
+                    transpirables hasta materiales sostenibles, cada detalle 
+                    cuenta en la elección de una pieza perfecta para tu guardarropa
+                </p>
+            </div>
+        </div>
+
+        <div class="icon-1">
+            <div class="icon-img">
+                <img src="img/i3.svg" alt="">
+            </div>
+            <div class="icon-txt">
+                <h3>Diseño y Versatilidad</h3>
+                <p>
+                    Un diseño bien pensado transforma cualquier outfit. 
+                    La clave está en piezas que puedan adaptarse a distintas ocasiones,
+                    combinando con facilidad para lograr un look casual, 
+                    formal o intermedio sin esfuerzo. Los cortes modernos y los colores
+                    neutros potencian aún más su versatilidad y elegancia.
+                </p>
+            </div>
+        </div>
+
+        <div class="icon-1">
+            <div class="icon-img">
+                <img src="img/i2.svg" alt="">
+            </div>
+            <div class="icon-txt">
+                <h3>Cuidado y Durabilidad</h3>
+                <p>
+                    El mantenimiento adecuado de tus prendas asegura que luzcan impecables 
+                    por más tiempo. Con técnicas de lavado correctas, almacenamiento adecuado 
+                    y eligiendo materiales de calidad, puedes conservar la apariencia y 
+                    estructura de cada pieza por años
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <section class="blog container">
+        <div class="blog-1">
+            <img src="img/b1.jpg" alt="">
+            <h3>Esenciales para un Look Perfecto</h3>
+            <p>
+                Desde accesorios hasta ropa cómoda y elegante,
+                todo lo que necesitas para combinar estilo y funcionalidad.
+                Descubre piezas versátiles para cualquier ocasión y luce impecable en cada momento.
+            </p>
+        </div>
+
+        <div class="blog-1">
+            <img src="img/b2.jpg" alt="">
+            <h3>Elegancia en Cada Paso</h3>
+            <p>
+                Unos buenos zapatos dicen más que mil palabras.
+                Completa tu look con calzado sofisticado y prendas que reflejen tu
+                estilo único. Porque la verdadera elegancia comienza desde el suelo.
+            </p>
+        </div>
+
+        <div class="blog-1">
+            <img src="img/b3.jpg" alt="">
+            <h3>La Camisa que Habla por Ti</h3>
+            <p>
+                Refina tu estilo con camisas de alta calidad,
+                perfectas para la oficina o una ocasión especial. Diseños modernos y
+                sofisticados que destacan tu presencia.
+            </p>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="footer-content container">
+            <div class="link">
+                <h3>lorem</h3>
+                <ul>
+                    <li><a href="#">lorem</a></li>
+                </ul>
+            </div>
+
+            <div class="link">
+                <h3>lorem</h3>
+                <ul>
+                    <li><a href="#">lorem</a></li>
+                </ul>
+            </div>
+
+            <div class="link">
+                <h3>lorem</h3>
+                <ul>
+                    <li><a href="#">lorem</a></li>
+                </ul>
+            </div>
+
+            <div class="link">
+                <h3>lorem</h3>
+                <ul>
+                    <li><a href="#">lorem</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Formulario para dejar los datos personales -->
+        <div class="form-container">
+            <form action="#" method="POST" id="formulario">
+                <h3>Déjanos tus datos:</h3>
+
+                <label for="nombre">Nombre:</label>
+                <input type="text" id="nombre" name="nombre" required placeholder="Tu nombre">
+
+                <label for="telefono">Número Celular:</label>
+                <input type="tel" id="telefono" name="telefono" required placeholder="Tu número celular">
+
+                <label for="correo">Correo Electrónico:</label>
+                <input type="email" id="correo" name="correo" required placeholder="Tu correo electrónico">
+
+                <button type="submit">Enviar</button>
+            </form>
+        </div>
+        </div>
+        </section>
+
+        <section class="contacto-section" id="contactos">
+            <h2>Contacto</h2>
+
+            <div class="contacto-content">
+                <!-- Información de contacto -->
+                <div class="contacto-info">
+                    <div>
+                        <h3>Teléfono:</h3>
+                        <p>926584464</p>
+                    </div>
+                    <div>
+                        <h3>Correo Electrónico:</h3>
+                        <p><a href="mailto:alexrmcr@gmail.com">alexrmcr@gmail.com</a></p>
+                    </div>
+                </div>
+    </footer>
+
+    <script>
+        // Carrito de compras
+        const carrito = document.querySelector('#carrito');
+        const listaCarrito = document.querySelector('#lista-carrito tbody');
+        const vaciarCarritoBtn = document.querySelector('#vaciar-carrito');
+        const productos = document.querySelector('#lista-1');
+        let articulosCarrito = [];
+
+        // Listeners
+        cargarEventListeners();
+
+        function cargarEventListeners() {
+            // Agregar producto al carrito
+            productos.addEventListener('click', agregarProducto);
+
+            // Eliminar producto del carrito
+            carrito.addEventListener('click', eliminarProducto);
+
+            // Vaciar carrito
+            vaciarCarritoBtn.addEventListener('click', () => {
+                articulosCarrito = [];
+                limpiarHTML();
+            });
+        }
+
+        function agregarProducto(e) {
+            e.preventDefault();
+            if (e.target.classList.contains('agregar-carrito')) {
+                const productoSeleccionado = e.target.parentElement.parentElement;
+                leerDatosProducto(productoSeleccionado);
+            }
+        }
+
+        function leerDatosProducto(producto) {
+            const infoProducto = {
+                imagen: producto.querySelector('img').src,
+                titulo: producto.querySelector('h3').textContent,
+                precio: producto.querySelector('.precio').textContent,
+                id: producto.querySelector('a').getAttribute('data-id'),
+                cantidad: 1
+            };
+
+            // Revisar si un elemento ya existe en el carrito
+            const existe = articulosCarrito.some(producto => producto.id === infoProducto.id);
+            if (existe) {
+                const productos = articulosCarrito.map(producto => {
+                    if (producto.id === infoProducto.id) {
+                        producto.cantidad++;
+                        return producto;
+                    } else {
+                        return producto;
+                    }
+                });
+                articulosCarrito = [...productos];
+            } else {
+                articulosCarrito = [...articulosCarrito, infoProducto];
+            }
+
+            carritoHTML();
+        }
+
+        function eliminarProducto(e) {
+            if (e.target.classList.contains('borrar')) {
+                const productoId = e.target.getAttribute('data-id');
+                articulosCarrito = articulosCarrito.filter(producto => producto.id !== productoId);
+                carritoHTML();
+            }
+        }
+
+        function carritoHTML() {
+            limpiarHTML();
+
+            articulosCarrito.forEach(producto => {
+                const row = document.createElement('tr');
+                row.innerHTML = `
+                    <td><img src="${producto.imagen}" width="100"></td>
+                    <td>${producto.titulo}</td>
+                    <td>${producto.precio}</td>
+                    <td>${producto.cantidad}</td>
+                    <td>
+                        <a href="#" class="borrar" data-id="${producto.id}">X</a>
+                    </td>
+                `;
+                listaCarrito.appendChild(row);
+            });
+        }
+
+        function limpiarHTML() {
+            while (listaCarrito.firstChild) {
+                listaCarrito.removeChild(listaCarrito.firstChild);
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', function () {
+                const slides = document.querySelectorAll('.carousel-slide');
+                const dots = document.querySelectorAll('.dot');
+                const prevBtn = document.querySelector('.carousel-button.prev');
+                const nextBtn = document.querySelector('.carousel-button.next');
+                let currentSlide = 0;
+
+                function showSlide(n) {
+                    slides.forEach(slide => slide.classList.remove('active'));
+                    dots.forEach(dot => dot.classList.remove('active'));
+
+                    currentSlide = (n + slides.length) % slides.length;
+
+                    slides[currentSlide].classList.add('active');
+                    dots[currentSlide].classList.add('active');
+                }
+
+                prevBtn.addEventListener('click', () => {
+                    showSlide(currentSlide - 1);
+                });
+
+                nextBtn.addEventListener('click', () => {
+                    showSlide(currentSlide + 1);
+                });
+
+                dots.forEach((dot, index) => {
+                    dot.addEventListener('click', () => {
+                        showSlide(index);
+                    });
+                });
+
+                // Auto-slide (opcional)
+                setInterval(() => {
+                    showSlide(currentSlide + 1);
+                }, 5000);
+            });
+    </script>
+</body>
+
+</html>
